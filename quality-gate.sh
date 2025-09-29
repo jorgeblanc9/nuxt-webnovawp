@@ -37,15 +37,25 @@ echo "🔧 Cargando Node.js con nvm..."
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Usar la versión especificada en .nvmrc
+# Buscar archivo .nvmrc en el directorio actual y directorios padre
+NVMRC_PATH=""
 if [ -f ".nvmrc" ]; then
-    echo "📋 Usando versión de Node.js del .nvmrc..."
-    nvm use
+    NVMRC_PATH=".nvmrc"
+elif [ -f "../.nvmrc" ]; then
+    NVMRC_PATH="../.nvmrc"
+elif [ -f "../../.nvmrc" ]; then
+    NVMRC_PATH="../../.nvmrc"
+fi
+
+# Usar la versión especificada en .nvmrc
+if [ ! -z "$NVMRC_PATH" ]; then
+    echo "📋 Usando versión de Node.js del .nvmrc en $NVMRC_PATH..."
+    nvm use $(cat $NVMRC_PATH)
     echo "✅ Node.js versión: $(node --version)"
     echo "✅ npm versión: $(npm --version)"
 else
-    echo "❌ Error: No se encontró archivo .nvmrc"
-    exit 1
+    echo "⚠️  No se encontró archivo .nvmrc"
+    echo "💡 Usando versión actual de Node.js: $(node --version)"
 fi
 echo ""
 
