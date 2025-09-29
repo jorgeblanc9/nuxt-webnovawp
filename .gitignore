@@ -1,18 +1,24 @@
-# Created by https://www.toptal.com/developers/gitignore/api/nuxtjs
-# Edit at https://www.toptal.com/developers/gitignore?templates=nuxtjs
-
-### NuxtJS ###
-# Generated dirs
-dist
-.nuxt
-.nuxt-*
+# Nuxt dev/build outputs
 .output
-.gen
+.data
+.nuxt
+.nitro
+.cache
+dist
 
 # Node dependencies
 node_modules
 
-# System files
+# Logs
+logs
 *.log
 
-# End of https://www.toptal.com/developers/gitignore/api/nuxtjs
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
