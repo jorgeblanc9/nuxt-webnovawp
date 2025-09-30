@@ -3,8 +3,8 @@ export default {
     {
       name: "Nuxt-Webnovawp", // Nombre que verás en `pm2 ls`
       exec_mode: "cluster", // Recomendado: para aprovechar múltiples núcleos de CPU
-      instances: "max", // Usa todos los núcleos disponibles, o puedes poner un número específico como 4
-      script: "./.output/server/index.mjs", // El script de inicio de producción de Nuxt 3
+      instances: "2", // Usa todos los núcleos disponibles, o puedes poner un número específico como 4
+      script: "/home/jorgeblanc9/microservicios/portafolio/nuxt-webnovawp/.output/server/index.mjs", // El script de inicio de producción de Nuxt 3
       env: {
         NODE_ENV: "production",
         // Puedes añadir aquí otras variables de entorno
